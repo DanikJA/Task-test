@@ -26,7 +26,7 @@ const MovieForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="space-y-2">
+    <Form onSubmit={handleSubmit}>
       <Input
         value={title}
         onChange={e => setTitle(e.target.value)}
@@ -37,13 +37,8 @@ const MovieForm = () => {
         value={releaseYear}
         onChange={e => setReleaseYear(e.target.value)}
         placeholder="Year"
-        className="border p-1"
       />
-      <Select
-        value={format}
-        onChange={e => setFormat(e.target.value)}
-        className="border p-1"
-      >
+      <Select value={format} onChange={e => setFormat(e.target.value)}>
         <option>VHS</option>
         <option>DVD</option>
         <option>Blu-ray</option>
@@ -52,14 +47,8 @@ const MovieForm = () => {
         value={stars}
         onChange={e => setStars(e.target.value)}
         placeholder="Stars (comma-separated)"
-        className="border p-1"
       />
-      <Button
-        type="submit"
-        className="bg-blue-500 text-white px-2 py-1 rounded"
-      >
-        Add Movie
-      </Button>
+      <Button type="submit">Add Movie</Button>
     </Form>
   );
 };
