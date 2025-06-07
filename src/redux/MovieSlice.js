@@ -5,6 +5,8 @@ const API_URL = 'http://localhost:8000/api/v1';
 
 export const fetchMovies = createAsyncThunk('movies/fetchMovies', async () => {
   const res = await axios.get(`${API_URL}/movies`);
+  console.log('API response:', res.data);
+
   return res.data;
 });
 
@@ -37,10 +39,12 @@ const movieSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchMovies.fulfilled, (state, action) => {
-        state.movies = action.payload;
+        console.log('fetchMovies payload:', action.payload);
+        state.movies = action.payload.movies;
         state.status = 'succeeded';
       })
       .addCase(addMovie.fulfilled, (state, action) => {
+        console.log('addMovie payload:', action.payload);
         state.movies.push(action.payload);
       })
       .addCase(deleteMovie.fulfilled, (state, action) => {
