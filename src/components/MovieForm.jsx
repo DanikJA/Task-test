@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addMovie } from '../redux/MovieSlice';
+import { Form, Input, Select, Button } from './MovieFormStyled';
 
 const MovieForm = () => {
   const dispatch = useDispatch();
@@ -25,8 +26,8 @@ const MovieForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-2">
-      <input
+    <Form onSubmit={handleSubmit} className="space-y-2">
+      <Input
         value={title}
         onChange={e => setTitle(e.target.value)}
         placeholder="Title"
@@ -38,28 +39,28 @@ const MovieForm = () => {
         placeholder="Year"
         className="border p-1"
       />
-      <select
+      <Select
         value={format}
         onChange={e => setFormat(e.target.value)}
         className="border p-1"
       >
-        <option>DVD</option>
         <option>VHS</option>
-        <option>Blu-Ray</option>
-      </select>
+        <option>DVD</option>
+        <option>Blu-ray</option>
+      </Select>
       <input
         value={stars}
         onChange={e => setStars(e.target.value)}
         placeholder="Stars (comma-separated)"
         className="border p-1"
       />
-      <button
+      <Button
         type="submit"
         className="bg-blue-500 text-white px-2 py-1 rounded"
       >
         Add Movie
-      </button>
-    </form>
+      </Button>
+    </Form>
   );
 };
 

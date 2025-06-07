@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addMovie } from '../redux/MovieSlice';
+import { ImportContainer, FileInput } from './MovieImport.styled';
 
 import { parseMoviesFile } from '../components/parseMovie.jsx';
 
@@ -16,9 +17,9 @@ const MovieImport = () => {
   };
 
   return (
-    <div className="my-4">
-      <input type="file" accept=".txt" onChange={handleFileChange} />
-    </div>
+    <ImportContainer>
+      <FileInput type="file" accept=".txt" onChange={handleFileChange} />
+    </ImportContainer>
   );
 };
 

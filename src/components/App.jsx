@@ -4,6 +4,7 @@ import { fetchMovies } from '../redux/MovieSlice';
 import MovieList from './MovieList';
 import MovieForm from './MovieForm';
 import MovieImport from './MovieImport';
+import { Container, Title } from './App.styled';
 
 function App() {
   const dispatch = useDispatch();
@@ -13,12 +14,12 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Movies App</h1>
+    <Container className="p-4">
+      <Title className="text-2xl font-bold mb-4">Movies App</Title>
       <MovieForm />
       <MovieImport />
       <MovieList />
-    </div>
+    </Container>
   );
 }
 

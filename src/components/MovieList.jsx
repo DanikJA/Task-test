@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteMovie } from '../redux/MovieSlice';
+import { ListTitle, MovieItem, DeleteButton } from './MovieList.styled';
 
 const MovieList = () => {
   const dispatch = useDispatch();
@@ -16,20 +17,18 @@ const MovieList = () => {
 
   return (
     <div>
-      <h2 className="text-xl font-semibold mt-4 mb-2">Movie List</h2>
-      <ul className="space-y-2">
+      <ListTitle>Movie List</ListTitle>
+      <ul>
         {sortedMovies.map(movie => (
-          <li key={movie.id} className="border p-2 rounded">
+          <MovieItem key={movie.id}>
             <strong>{movie.title}</strong> ({movie.releaseYear}) [{movie.format}
-            ]<br />
+            ]
+            <br />
             Stars: {movie.stars.join(', ')}
-            <button
-              onClick={() => handleDelete(movie.id)}
-              className="ml-4 text-red-500 hover:underline"
-            >
+            <DeleteButton onClick={() => handleDelete(movie.id)}>
               Delete
-            </button>
-          </li>
+            </DeleteButton>
+          </MovieItem>
         ))}
       </ul>
     </div>
