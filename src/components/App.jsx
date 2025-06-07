@@ -14,8 +14,8 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Container className="p-4">
-      <Title className="text-2xl font-bold mb-4">Movies App</Title>
+    <Container>
+      <Title>Movies App</Title>
       <MovieForm />
       <MovieImport />
       <MovieList />
