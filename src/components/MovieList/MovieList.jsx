@@ -20,7 +20,7 @@ const MovieList = () => {
       <h1>Movie List</h1>
       <ul>
         {sortedMovies.map(movie => (
-          <ul key={movie.id}>
+          <li key={movie.id}>
             <strong>{movie.title}</strong> ({movie.releaseYear}) [{movie.format}
             ]
             <br />
@@ -29,7 +29,7 @@ const MovieList = () => {
               ? movie.stars.join(', ')
               : 'No stars info'}
             <button onClick={() => handleDelete(movie.id)}>Delete</button>
-          </ul>
+          </li>
         ))}
       </ul>
     </div>

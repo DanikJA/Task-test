@@ -31,7 +31,6 @@ const MovieForm = () => {
         value={title}
         onChange={e => setTitle(e.target.value)}
         placeholder="Title"
-        className="border p-1"
       />
       <input
         value={releaseYear}
@@ -46,7 +45,7 @@ const MovieForm = () => {
       <input
         value={stars}
         onChange={e => setStars(e.target.value)}
-        placeholder="Stars (comma-separated)"
+        placeholder="Stars"
       />
       <Button type="submit">Add Movie</Button>
     </Form>
