@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchMovies } from '../redux/MovieSlice';
-import MovieList from './MovieList';
-import MovieForm from './MovieForm';
-import MovieImport from './MovieImport';
+import MovieList from './MovieList/MovieList';
+import MovieForm from './MovieForm/MovieForm';
+import MovieImport from './MovieImport/MovieImport';
 import { Container, Title } from './App.styled';
 
 function App() {

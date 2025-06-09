@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addMovie } from '../redux/MovieSlice';
+import { addMovie } from '../../redux/MovieSlice';
 import { ImportContainer, FileInput } from './MovieImport.styled';
 
-import { parseMoviesFile } from '../components/parseMovie.jsx';
+import { parseMoviesFile } from '../../utils/parseMovie.jsx';
 
 const MovieImport = () => {
   const dispatch = useDispatch();

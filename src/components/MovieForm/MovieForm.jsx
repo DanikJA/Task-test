@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addMovie } from '../redux/MovieSlice';
+import { addMovie } from '../../redux/MovieSlice';
 import { Form, Input, Select, Button } from './MovieFormStyled';
 
 const MovieForm = () => {
