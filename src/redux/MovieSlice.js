@@ -1,22 +1,33 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+// const API_URL = import.meta.env.VITE_API_URL;
+// const token = import.meta.env.VITE_API_TOKEN;
+
 const API_URL = 'http://localhost:8000/api/v1';
+const token =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjI0OTcyMjYwfQ.X31cryg_A126WLYT96PD-SLLFWSxb2SeoQZ4cvx3VhU';
+
+const axiosInst = axios.create({
+  baseURL: API_URL,
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+});
 
 export const fetchMovies = createAsyncThunk('movies/fetchMovies', async () => {
-  const res = await axios.get(`${API_URL}/movies`);
+  const res = await axiosInst.get(`/movies`);
   console.log('API response:', res.data);
-
   return res.data;
 });
 
 export const addMovie = createAsyncThunk('movies/addMovie', async movie => {
-  const res = await axios.post(`${API_URL}/movies`, movie);
+  const res = await axiosInst.post(`/movies`, movie);
   return res.data;
 });
 
 export const deleteMovie = createAsyncThunk('movies/deleteMovie', async id => {
-  await axios.delete(`${API_URL}/movies/${id}`);
+  await axiosInst.delete(`/movies/${id}`);
   return id;
 });
 
