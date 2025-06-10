@@ -4,16 +4,29 @@ import { deleteMovie } from '../../redux/MovieSlice';
 
 const MovieList = () => {
   const dispatch = useDispatch();
-  const movies = useSelector(state => state.movies);
-  console.log('movies in component:', movies);
+  const { movies, searchTitle, searchActor } = useSelector(
+    state => state.movies
+  );
 
   const handleDelete = id => {
     dispatch(deleteMovie(id));
   };
 
-  const sortedMovies = Array.isArray(movies)
-    ? [...movies].sort((a, b) => a.title.localeCompare(b.title))
+  const filteredMovies = Array.isArray(movies)
+    ? movies.filter(movie => {
+        const titleMatch = movie.title
+          .toLowerCase()
+          .includes(searchTitle.toLowerCase());
+        const actorMatch = movie.stars?.some(star =>
+          star.toLowerCase().includes(searchActor.toLowerCase())
+        );
+        return titleMatch && actorMatch;
+      })
     : [];
+
+  const sortedMovies = [...filteredMovies].sort((a, b) =>
+    a.title.localeCompare(b.title)
+  );
 
   return (
     <div>
@@ -28,6 +41,7 @@ const MovieList = () => {
             {Array.isArray(movie.stars)
               ? movie.stars.join(', ')
               : 'No stars info'}
+            <br />
             <button onClick={() => handleDelete(movie.id)}>Delete</button>
           </li>
         ))}

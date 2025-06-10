@@ -5,6 +5,7 @@ import MovieList from './MovieList/MovieList';
 import MovieForm from './MovieForm/MovieForm';
 import MovieImport from './MovieImport/MovieImport';
 import { Container, Title } from './App.styled';
+import MovieSearch from './Search/MovieSearch.jsx';
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function App() {
       <MovieForm />
       <MovieImport />
       <MovieList />
+      <MovieSearch />
     </Container>
   );
 }
